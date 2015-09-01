@@ -1,34 +1,32 @@
 <?php
 
-include "shipmile_api_php/lib/Shiplmile/Client.php"
+include "./vendor/autoload.php";
 
-$shipmileInstance = new Shipmile\Client('', array('mode' => 'test'));
+$apiKey = // Fill your api key here
+$pickup_location = //fill your pickup location here;
+
+
+$shipmileInstance = new Shipmile\Client($apiKey, array('mode' => 'test'));
 //Create order:
 $shipmile_order= array();
-$shipmile_order["pickup_location"] = $this->shipmile_pickup;
+$shipmile_order["pickup_location"] = $pickup_location;
 //This contains an array of orders to be pushed
 $shipmile_order["shipments"] = array();
 //structure of each shipment object
 //$json='
 $json = '{
-    //Internal shipment reference
    "reference":"WHOZHIGHHYD001",
-    //Options: "Prepaid", "Cod"
    "payment_type":"Prepaid",
    "receiver":{
       "name1":"Karthik",
-      "street1":"Add, Gachibowli",
-      "pincode":"500032",
-      "city":"Hyderabad",
+      "street1":"Add, GK1",
+      "pincode":"110048",
+      "city":"Delhi",
       "state":"Telangana",
       "phone":"7731826094"
    },
    "details":{
-
-        //shipment value in Rupees
       "value":399,
-
-        //shipment weight in gms
       "weight":300
    },
    "invoice":{
@@ -60,11 +58,13 @@ $json = '{
 $result = json_decode ($json);
 
 echo "RESULT :";
-echo $result;
-
 array_push($shipmile_order["shipments"],$result);
 $create_body = array("body" => $shipmile_order);
-$shipmileInstance->orders()->create($create_body);
 
-echo $shipmileInstance;
+$response = $shipmileInstance->orders()->create($create_body);
+
+echo $response->code;
+
+echo print_r($response->body);
+//echo print_r($shipmileInstance);
 ?>
