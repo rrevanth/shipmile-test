@@ -6,9 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
-    'Shipmile\\' => array($baseDir . '/lib'),
-    'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
+    'Shipmile\\' => array($vendorDir . '/shipmile/shipmile-api/lib'),
     'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
     'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
 );
