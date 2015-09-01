@@ -1,0 +1,26 @@
+{
+    "name": "shipmile/shipmile-api",
+    "version" : "0.1.0",
+    "description": "API library for PHP",
+    "license" : "MIT",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "authors": [
+        {
+            "name": "Karthik Kolli",
+            "email": "karthik@shipmile.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ext-json" : "*",
+        "guzzle/guzzle" : "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Shipmile\\" : "lib/"
+        }
+    }
+}
